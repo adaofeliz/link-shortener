@@ -23,6 +23,9 @@
 
     <properties>
 
+        <!-- Utils-->
+        <guava.version>18.0</guava.version>
+
         <!-- Testing -->
         <testng.version>6.8.8</testng.version>
 
@@ -31,6 +34,13 @@
     <dependencyManagement>
 
         <dependencies>
+
+            <!-- Utils -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.testng</groupId>
