@@ -31,15 +31,15 @@ public class ServiceController {
 
     @ResponseBody
     @RequestMapping(value = "/link", method = RequestMethod.POST)
-    public ShortLink createLink(@RequestBody String originalUrl) {
-        return new ShortLink(); // TODO - IMPLEMENT
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createLink(@RequestBody String originalUrl) {
+        // TODO - IMPLEMENT
     }
 
     @ResponseBody
     @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.CREATED)
-    public void getLink(@PathVariable String shortUri) {
-        // TODO - IMPLEMENT
+    public ShortLink getLink(@PathVariable String shortUri) {
+        return new ShortLink(); // TODO - IMPLEMENT
     }
 
 
