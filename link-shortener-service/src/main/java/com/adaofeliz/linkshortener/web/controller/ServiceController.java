@@ -42,7 +42,6 @@ public class ServiceController {
         return shortLinkService.getShortLinkByShortUri(shortUri);
     }
 
-
     @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.PUT, consumes = MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void getLink(@PathVariable String shortUri, @RequestBody String originalUrl) {
