@@ -17,11 +17,15 @@
 
     <modules>
         <module>link-shortener-service</module>
+        <module>link-shortener-swagger</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <properties>
+
+        <!-- Swagger -->
+        <swagger.version>0.9.1</swagger.version>
 
         <!-- Utils-->
         <guava.version>18.0</guava.version>
@@ -35,6 +39,20 @@
 
         <dependencies>
 
+            <!-- Link Shortener Dependencies -->
+            <dependency>
+                <groupId>com.adaofeliz.linkshortener</groupId>
+                <artifactId>link-shortener-swagger</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Swagger -->
+            <dependency>
+                <groupId>com.mangofactory</groupId>
+                <artifactId>swagger-springmvc</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
             <!-- Utils -->
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -42,6 +60,7 @@
                 <version>${guava.version}</version>
             </dependency>
 
+            <!-- Tests -->
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>

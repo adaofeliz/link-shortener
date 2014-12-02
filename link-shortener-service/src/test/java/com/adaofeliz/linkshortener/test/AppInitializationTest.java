@@ -1,6 +1,6 @@
 package com.adaofeliz.linkshortener.test;
 
-import com.adaofeliz.linkshortener.config.AppConfig;
+import com.adaofeliz.linkshortener.Main;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @WebAppConfiguration
-@ContextConfiguration(classes = AppConfig.class) // Web Application base config file
+@ContextConfiguration(classes = Main.class) // Web Application base config file
 public class AppInitializationTest extends AbstractTestNGSpringContextTests {
 
     @Autowired

@@ -1,14 +1,15 @@
 package com.adaofeliz.linkshortener.web.controller;
 
-import com.adaofeliz.linkshortener.service.dto.ShortLink;
+import com.adaofeliz.linkshortener.service.ShortLinkService;
+import com.adaofeliz.linkshortener.service.domain.ShortLink;
 import com.adaofeliz.web.versioning.ApiVersion;
-import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,41 +20,39 @@ import java.util.List;
  */
 
 @RestController
-@ApiVersion("1")
+@ApiVersion({"1"})
 @RequestMapping("/api")
 public class ServiceController {
 
-    @ResponseBody
-    @RequestMapping(value = "/link", method = RequestMethod.GET)
-    public List<ShortLink> link() {
-        return Lists.newArrayList(); // TODO - IMPLEMENT
+    @Autowired
+    private ShortLinkService shortLinkService;
+
+    @RequestMapping(value = "/link", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
+    public ShortLink createLink(@RequestBody String originalUrl) {
+        return shortLinkService.createNewShortLink(originalUrl);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/link", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createLink(@RequestBody String originalUrl) {
-        // TODO - IMPLEMENT
+    @RequestMapping(value = "/link/all", method = RequestMethod.GET)
+    public List<ShortLink> allLinks() {
+        return shortLinkService.getAllLinks();
     }
 
-    @ResponseBody
     @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.GET)
     public ShortLink getLink(@PathVariable String shortUri) {
-        return new ShortLink(); // TODO - IMPLEMENT
+        return shortLinkService.getShortLinkByShortUri(shortUri);
     }
 
 
-    @ResponseBody
-    @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.PUT)
-    public ShortLink getLink(@PathVariable String shortUri, @RequestBody String originalUrl) {
-        return new ShortLink(); // TODO - IMPLEMENT
+    @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.PUT, consumes = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public void getLink(@PathVariable String shortUri, @RequestBody String originalUrl) {
+        shortLinkService.updateShortLink(shortUri, originalUrl);
     }
 
-    @ResponseBody
     @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteLink(@PathVariable String shortUri) {
-        // TODO - IMPLEMENT
+        shortLinkService.deleteShortLinkByShortUri(shortUri);
     }
 
 }
