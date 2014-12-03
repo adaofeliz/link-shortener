@@ -46,7 +46,7 @@ public class ServiceController {
     @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.PUT, consumes = MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void updateLink(@PathVariable String shortUri, @RequestBody String originalUrl) {
-        shortLinkService.updateShortLink(shortUri, originalUrl);
+        shortLinkService.updateShortLinkOriginalUrl(shortUri, originalUrl);
     }
 
     @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.DELETE)
