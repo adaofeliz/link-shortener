@@ -2,6 +2,10 @@ Link Shortener  - [![Build Status](https://travis-ci.org/adaofeliz/link-shortene
 ==================
 A simple shortener REST  service implementing the basic CRUD methods
 
+DEMO
+--------------
+[link-shortener.adaofeliz.com]
+
 Service API
 --------------
 
@@ -44,3 +48,5 @@ Try it
 [1]: ./.screenshots/swagger_ui.png
 
 [Spring Boot Docs]: http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-sql.html#boot-features-connect-to-production-database
+
+[link-shortener.adaofeliz.com]: http://link-shortener.adaofeliz.com
