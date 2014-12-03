@@ -33,7 +33,7 @@ git clone https://github.com/adaofeliz/link-shortener.git link-shortener
 ```sh
 cd link-shortener
 mvn clean install
-java -jar target/link-shortener.jar
+java -jar target/link-shortener.war
 ```
 
 Try it
