@@ -28,6 +28,7 @@ public class ServiceController {
     private ShortLinkService shortLinkService;
 
     @RequestMapping(value = "/link", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public ShortLink createLink(@RequestBody String originalUrl) {
         return shortLinkService.createNewShortLink(originalUrl);
     }
@@ -44,7 +45,7 @@ public class ServiceController {
 
     @RequestMapping(value = "/link/{shortUri}", method = RequestMethod.PUT, consumes = MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void getLink(@PathVariable String shortUri, @RequestBody String originalUrl) {
+    public void updateLink(@PathVariable String shortUri, @RequestBody String originalUrl) {
         shortLinkService.updateShortLink(shortUri, originalUrl);
     }
 
