@@ -1,23 +1,26 @@
 package com.adaofeliz.linkshortener.test;
 
 import com.adaofeliz.linkshortener.Main;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 @WebAppConfiguration
-@ContextConfiguration(classes = Main.class) // Web Application base config file
-public class AppInitializationTest extends AbstractTestNGSpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = {Main.class})
+public class AppInitializationTest {
 
     @Autowired
-    private ApplicationContext context;
+    ApplicationContext context;
 
-    @Test(description = "This test will test if the IoC framework is loading without errors.")
-    public void testSpringApplicationContextLoad() throws Exception {
-        Assert.assertNotNull(context);
+    @Test
+    public void testSpringApplicationContextLoad() {
+        assertNotNull(context);
     }
 }
