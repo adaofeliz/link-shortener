@@ -17,10 +17,10 @@ Swagger UI
 --------------
 ![Swagger UI][1]
 
-Short Link redirect to Original URL
+Database
 --------------
-http://localhost:8080/[shorturi]
-
+* H2 Database Engine - Mode: Embedded and In-memory 
+* Connect to production database - [Spring Boot Docs]
 
 Installation
 --------------
@@ -39,6 +39,8 @@ java -jar target/link-shortener.jar
 Try it
 --------------
 - Now open your browser: http://localhost:8080/
+- Short link redirect to original url: http://localhost:8080/[shorturi]
 
 [1]: ./.screenshots/swagger_ui.png
 
+[Spring Boot Docs]: http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-sql.html#boot-features-connect-to-production-database
