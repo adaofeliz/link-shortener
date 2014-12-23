@@ -15,10 +15,10 @@ Service API
 
 Response	| Method	| Path	| Description
 --------------- | ------------- | ----- | -------------
-ShortLink	| POST	| /v1/api/link	| Create a new Short Link.
-ShortLink	| GET	| /v1/api/link/{shortUri}	| Get JSON representation of a given short uri.
-N/A	| PUT	| /v1/api/link/{shortUri} | Update the urginal url of a given Short Link.
-N/A	| DELETE	| /v1/api/link/{shortUri}	| Delete a Short Link from the database.
+ShortLink	| POST	| /api/link	| Create a new Short Link.
+ShortLink	| GET	| /api/link/{shortUri}	| Get JSON representation of a given short uri.
+N/A	| PUT	| /api/link/{shortUri} | Update the urginal url of a given Short Link.
+N/A	| DELETE	| /api/link/{shortUri}	| Delete a Short Link from the database.
 ShortLink	List | GET	| /v1/api/link/all	| Get All Short Links in the database.
 
 Swagger UI
