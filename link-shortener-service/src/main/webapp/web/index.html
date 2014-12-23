@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Link Shortener</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Link Shortener</h1>
+    <h4>Source Code: <a href="https://github.com/adaofeliz/link-shortener">github.com/adaofeliz/link-shortener</a></h4>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="create-button" type="button">Create</button>
+                </span>
+                <input id="url-input" type="text" placeholder="http://www.google.com" class="form-control">
+            </div>
+        </div>
+        <table id="output-table" class="hide table table-striped">
+            <thead>
+            <tr>
+                <th>Original URL</th>
+                <th>URI</th>
+                <th>Creation Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="original-url"></td>
+                <td id="created-uri"></td>
+                <td id="creation-date"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    function createUrl() {
+
+        $('#output-table').addClass('hide');
+
+        var url = "/api/link";
+        var dataToBeSent = $('#url-input').val();
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "json",
+            contentType: "text/plain",
+            data: dataToBeSent,
+            success: function (data) {
+
+                var json = JSON.parse(JSON.stringify(data));
+
+                pathArray = window.location.href.split( '/' );
+                protocol = pathArray[0];
+                host = pathArray[2];
+                url = protocol + '//' + host + '/';
+
+                $('#original-url').text(json['originalUrl']);
+                $('#created-uri').text(url + json['shortUri']);
+                $('#creation-date').text(new Date(json['creationDate']));
+
+                $('#output-table').removeClass('hide');
+
+            }
+        });
+    }
+
+    $(document).ready(function () {
+
+        $("#create-button").click(function () {
+            createUrl();
+        });
+
+        $("#url-input").keypress(function (e) {
+            if (e.which == 13) {
+                createUrl();
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

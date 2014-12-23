@@ -2,7 +2,6 @@ package com.adaofeliz.linkshortener.web.controller;
 
 import com.adaofeliz.linkshortener.service.ShortLinkService;
 import com.adaofeliz.linkshortener.service.domain.ShortLink;
-import com.adaofeliz.web.versioning.ApiVersion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,7 +19,6 @@ import java.util.List;
  */
 
 @RestController
-@ApiVersion({"1"})
 @RequestMapping("/api")
 public class ServiceController {
 

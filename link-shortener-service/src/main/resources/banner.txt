@@ -1,2 +1,0 @@
-Link Shortener is a simple shortener REST service implementing the basic CRUD methods.
---

@@ -21,6 +21,12 @@ public class BaseController {
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public void applicationIndex(HttpServletResponse httpServletResponse) throws IOException {
+        httpServletResponse.sendRedirect("/web/index.html");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/swagger/", method = RequestMethod.GET)
+    public void applicationSwaggerIndex(HttpServletResponse httpServletResponse) throws IOException {
         httpServletResponse.sendRedirect("/swagger/index.html");
     }
 
